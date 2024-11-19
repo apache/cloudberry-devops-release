@@ -76,7 +76,7 @@
 #
 # --------------------------------------------------------------------
 
-set -euo pipefail
+set -uo pipefail
 
 # Default log file path
 DEFAULT_LOG_PATH="build-logs/details/make-${MAKE_NAME}.log"
