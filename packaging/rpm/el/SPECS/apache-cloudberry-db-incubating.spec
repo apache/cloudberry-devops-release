@@ -8,7 +8,6 @@
 %if %{with debug}
 %define __os_install_post %{nil}
 %define __strip /bin/true
-%define debug_package %{nil}
 %endif
 
 Name:           apache-cloudberry-db-incubating
@@ -144,6 +143,8 @@ ln -sfn %{cloudberry_install_dir}-%{version} %{buildroot}%{cloudberry_install_di
 %{prefix}
 
 %license %{cloudberry_install_dir}-%{version}/LICENSE
+
+%debug_package
 
 %post
 # Change ownership to gpadmin.gpadmin if the gpadmin user exists
