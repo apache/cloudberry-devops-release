@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+GPADMIN=gpadmin
+GPHOME=/usr/local/cloudberry-db
+
+if [ "$1" = configure ]; then
+
+  chown -R ${GPADMIN}:${GPADMIN} ${GPHOME}
+
+fi

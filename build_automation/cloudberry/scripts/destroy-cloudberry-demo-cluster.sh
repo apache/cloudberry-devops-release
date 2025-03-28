@@ -71,7 +71,7 @@ export LOG_DIR="${SRC_DIR}/build-logs"
 CLUSTER_LOG="${LOG_DIR}/destroy-cluster.log"
 
 # Initialize environment
-init_environment "Destroy Cloudberry Demo Cluster Script" "${CLUSTER_LOG}"
+init_environment "Destroy Cloudberry Demo Cluster Script" "${CLUSTER_LOG}" "${BUILD_DESTINATION}"
 
 # Source Cloudberry environment
 log_section "Environment Setup"

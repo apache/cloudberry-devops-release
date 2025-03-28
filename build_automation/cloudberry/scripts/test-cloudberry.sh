@@ -60,7 +60,7 @@ export LOG_DIR="build-logs"
 TEST_LOG="${LOG_DIR}/test.log"
 
 # Initialize environment
-init_environment "Cloudberry Test Script" "${TEST_LOG}"
+init_environment "Cloudberry Test Script" "${TEST_LOG}" "${BUILD_DESTINATION}"
 
 # Source Cloudberry environment
 log_section "Environment Setup"
