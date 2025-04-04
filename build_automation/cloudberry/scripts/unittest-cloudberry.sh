@@ -52,11 +52,11 @@ export LOG_DIR="${SRC_DIR}/build-logs"
 UNITTEST_LOG="${LOG_DIR}/unittest.log"
 
 # Initialize environment
-init_environment "Cloudberry Unittest Script" "${UNITTEST_LOG}"
+init_environment "Cloudberry Unittest Script" "${UNITTEST_LOG}" "${BUILD_DESTINATION}"
 
 # Set environment
 log_section "Environment Setup"
-export LD_LIBRARY_PATH=/usr/local/cloudberry-db/lib:LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=${BUILD_DESTINATION}/lib:LD_LIBRARY_PATH
 log_section_end "Environment Setup"
 
 # Unittest process
