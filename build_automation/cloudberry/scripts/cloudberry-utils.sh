@@ -30,11 +30,12 @@
 #   LOG_DIR - Directory for logs (defaults to ${SRC_DIR}/build-logs)
 #
 # Functions:
-#   init_environment "Script Name" "Log File"
+#   init_environment "Script Name" "Log File" "Build Destination"
 #     - Initialize logging and verify environment
 #     - Parameters:
 #       * script_name: Name of the calling script
 #       * log_file: Path to log file
+#       * build_destination: Path to Cloudberry destination, by default is /usr/local/cloudberry-db 
 #     - Returns: 0 on success, 1 on failure
 #
 #   execute_cmd command [args...]
@@ -70,7 +71,7 @@
 #
 # Example:
 #   source ./cloudberry-utils.sh
-#   init_environment "My Script" "${LOG_FILE}"
+#   init_environment "My Script" "${LOG_FILE}" "${BUILD_DESTINATION}"
 #   execute_cmd make clean
 #   log_section "Build Process"
 #   execute_cmd make -j$(nproc)
@@ -79,10 +80,18 @@
 #
 # --------------------------------------------------------------------
 
+DEFAULT_BUILD_DESTINATION=/usr/local/cloudberry-db
+
 # Initialize logging and environment
 init_environment() {
     local script_name=$1
     local log_file=$2
+    local build_destination=$3
+
+    if [ -z "$build_destination" ]; then
+        build_destination=${DEFAULT_BUILD_DESTINATION}
+    fi
+    export BUILD_DESTINATION=$build_destination
 
     echo "=== Initializing environment for ${script_name} ==="
     echo "${script_name} executed at $(date)" | tee -a "${log_file}"
@@ -91,6 +100,7 @@ init_environment() {
     echo "Working directory: $(pwd)" | tee -a "${log_file}"
     echo "Source directory: ${SRC_DIR}" | tee -a "${log_file}"
     echo "Log directory: ${LOG_DIR}" | tee -a "${log_file}"
+    echo "Build destination: ${BUILD_DESTINATION}" | tee -a "${log_file}"
 
     if [ -z "${SRC_DIR:-}" ]; then
         echo "Error: SRC_DIR environment variable is not set" | tee -a "${log_file}"

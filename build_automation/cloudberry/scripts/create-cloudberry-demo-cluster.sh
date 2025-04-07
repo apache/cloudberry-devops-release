@@ -35,7 +35,7 @@
 #   LOG_DIR - Directory for logs (defaults to ${SRC_DIR}/build-logs)
 #
 # Prerequisites:
-#   - Apache Cloudberry must be installed (/usr/local/cloudberry-db)
+#   - Apache Cloudberry must be installed (${BUILD_DESTINATION})
 #   - SSH must be configured for passwordless access to localhost
 #   - User must have permissions to create cluster directories
 #   - PostgreSQL client tools (psql) must be available
@@ -75,11 +75,11 @@ export LOG_DIR="${SRC_DIR}/build-logs"
 CLUSTER_LOG="${LOG_DIR}/cluster.log"
 
 # Initialize environment
-init_environment "Cloudberry Demo Cluster Script" "${CLUSTER_LOG}"
+init_environment "Cloudberry Demo Cluster Script" "${CLUSTER_LOG}" "${BUILD_DESTINATION}"
 
 # Setup environment
 log_section "Environment Setup"
-source /usr/local/cloudberry-db/greenplum_path.sh || exit 1
+source ${BUILD_DESTINATION}/greenplum_path.sh || exit 1
 log_section_end "Environment Setup"
 
 # Verify SSH access
