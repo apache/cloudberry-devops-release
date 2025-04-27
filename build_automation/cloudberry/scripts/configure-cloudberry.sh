@@ -145,7 +145,6 @@ execute_cmd ./configure --prefix=/usr/local/cloudberry-db \
             --with-perl \
             --with-pgport=5432 \
             --with-python \
-            --with-pythonsrc-ext \
             --with-ssl=openssl \
             --with-openssl \
             --with-uuid=e2fs \

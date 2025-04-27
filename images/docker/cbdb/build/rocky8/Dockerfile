@@ -119,6 +119,9 @@ RUN dnf makecache && \
         procps-ng \
         python3 \
         python3-devel \
+        python3-psutil \
+        python3-psycopg2 \
+        python3-pyyaml \
         readline-devel \
         rsync \
         sshpass \
