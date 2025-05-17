@@ -83,11 +83,12 @@ RUN dnf makecache && \
         autoconf \
         bison \
         bzip2-devel \
+        cmake3 \
         diffutils \
         file \
         flex \
-        gcc \
-        gcc-c++ \
+        gcc-toolset-11-gcc \
+        gcc-toolset-11-gcc-c++ \
         gdb \
         glibc-langpack-en \
         glibc-locale-source \
@@ -134,7 +135,9 @@ RUN dnf makecache && \
         libyaml-devel \
         perl-IPC-Run \
         protobuf-devel && \
-    dnf clean all && \
+    dnf clean all && rm -rf /var/cache/dnf/* && \
+    echo "source /opt/rh/gcc-toolset-11/enable" >> /etc/profile.d/gcc.sh && \
+    source /etc/profile.d/gcc.sh && \
     cd && XERCES_LATEST_RELEASE=3.3.0 && \
     wget -nv "https://archive.apache.org/dist/xerces/c/3/sources/xerces-c-${XERCES_LATEST_RELEASE}.tar.gz" && \
     echo "$(curl -sL https://archive.apache.org/dist/xerces/c/3/sources/xerces-c-${XERCES_LATEST_RELEASE}.tar.gz.sha256)" | sha256sum -c - && \

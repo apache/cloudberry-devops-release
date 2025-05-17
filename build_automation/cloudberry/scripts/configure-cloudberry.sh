@@ -33,6 +33,7 @@
 #   - MapReduce Processing
 #   - Oracle Compatibility (orafce)
 #   - ORCA Query Optimizer
+#   - PAX Access Method
 #   - PXF External Table Access
 #   - Test Automation Support (tap-tests)
 #
@@ -133,6 +134,7 @@ execute_cmd ./configure --prefix=/usr/local/cloudberry-db \
             --enable-mapreduce \
             --enable-orafce \
             --enable-orca \
+            --enable-pax \
             --enable-pxf \
             --enable-tap-tests \
             ${CONFIGURE_DEBUG_OPTS} \
