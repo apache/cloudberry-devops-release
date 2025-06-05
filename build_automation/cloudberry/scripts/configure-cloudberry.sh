@@ -57,9 +57,13 @@
 #
 #                 When true, enables:
 #                   --enable-debug
-#                   --enable-profiling
 #                   --enable-cassert
 #                   --enable-debug-extensions
+#
+#   ENABLE_PROFILING - Enable profiling options (default is false)
+#
+#                 When true, enables:
+#                   --enable-profiling
 #
 # Prerequisites:
 #   - System dependencies must be installed:
@@ -120,9 +124,13 @@ CONFIGURE_DEBUG_OPTS=""
 
 if [ "${ENABLE_DEBUG:-false}" = "true" ]; then
     CONFIGURE_DEBUG_OPTS="--enable-debug \
-                          --enable-profiling \
                           --enable-cassert \
                           --enable-debug-extensions"
+fi
+
+CONFIGURE_PROFILING_OPTS=""
+if [ "${ENABLE_PROFILING:-false}" = "true" ]; then
+    CONFIGURE_PROFILING_OPTS="--enable-profiling"
 fi
 
 # Configure build
@@ -138,6 +146,7 @@ execute_cmd ./configure --prefix=/usr/local/cloudberry-db \
             --enable-pxf \
             --enable-tap-tests \
             ${CONFIGURE_DEBUG_OPTS} \
+	    ${CONFIGURE_PROFILING_OPTS} \
             --with-gssapi \
             --with-ldap \
             --with-libxml \
