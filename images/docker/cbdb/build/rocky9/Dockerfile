@@ -130,6 +130,9 @@ RUN dnf makecache && \
         perl-Test-Simple \
         perl-core \
         python3-devel \
+        python3-psutil \
+        python3-psycopg2 \
+        python3-pyyaml \
         python3-pytest \
         readline-devel \
         zlib-devel && \
